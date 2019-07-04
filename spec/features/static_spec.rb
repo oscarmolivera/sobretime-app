@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe 'navegate' do
+  
   describe 'homepage' do
     it 'Existe_home' do
       visit root_path
