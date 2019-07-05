@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show]
   before_action :authenticate_user!
   def index
+    @post = Post.all
   end
   
   def new

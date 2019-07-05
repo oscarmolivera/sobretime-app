@@ -1,12 +1,12 @@
 <div class="logo">
-<h1>Registro de Tiempos.</h1>
+<h1>Registro de Horas.</h1>
 </div>
 <ul class="custom-nav nav nav-pills">
   <li class="nav-item <%= active?(root_path) %>">
     <%= link_to 'Inicio', root_path %>
   </li>
-  <li class="nav-item <%= active?(new_post_path) %>">
-    <%= link_to 'Registros', new_post_path %>
+  <li class="nav-item <%= active?(posts_path) %>">
+    <%= link_to 'Registros', posts_path %>
   </li>
   <li class="nav-item dropdown ml-md-auto pull-right <%= active?(edit_user_registration_path) %>%">
       <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Perfil</a>

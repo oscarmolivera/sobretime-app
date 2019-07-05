@@ -2,19 +2,25 @@ require 'rails_helper'
 
 describe 'navegate' do
   before do
-    user = User.create!(email: "asde@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Jon", last_name:"Snow")
-    login_as(user, scope: :user)
+    @user = User.create!(email: "asde@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Jon", last_name:"Snow")
+    login_as(@user, scope: :user)
+    visit posts_path
   end
   
   describe 'index' do
-    it 'Post page Avalaible' do
-      visit posts_path
+    it 'can be access' do
       expect(page.status_code).to eq(200)
     end
 
-    it 'Post has content' do
-      visit posts_path
+    it 'has a post title' do
       expect(page).to have_content(/Posts/)
+    end
+
+    it 'has some Posts with content' do
+      post1 = Post.create!(date: Date.today, rationale: 'This is post1', user_id: @user.id)
+      post2 = Post.create!(date: Date.today, rationale: 'This is post2', user_id: @user.id)
+      visit posts_path
+      expect(page).to have_content(/post1|post2/)
     end
   end
   
