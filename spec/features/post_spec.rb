@@ -12,7 +12,7 @@ describe 'navegate' do
       expect(page.status_code).to eq(200)
     end
 
-    it 'has a post title' do
+    it 'has a \'post\' title' do
       expect(page).to have_content(/Posts/)
     end
 
@@ -21,6 +21,10 @@ describe 'navegate' do
       post2 = Post.create!(date: Date.today, rationale: 'This is post2', user_id: @user.id)
       visit posts_path
       expect(page).to have_content(/post1|post2/)
+    end
+
+    it 'has a user with a Last and First Name' do
+      expect(@user.full_name).to eq("Snow, Jon")
     end
   end
   
