@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'navegate' do
   before do
-    @user = User.create!(email: "asde@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Jon", last_name:"Snow")
+    @user = FactoryBot.create(:user)
     login_as(@user, scope: :user)
     visit posts_path
   end
@@ -17,10 +17,10 @@ describe 'navegate' do
     end
 
     it 'has some Posts with content' do
-      post1 = Post.create!(date: Date.today, rationale: 'This is post1', user_id: @user.id)
-      post2 = Post.create!(date: Date.today, rationale: 'This is post2', user_id: @user.id)
+      post1 = FactoryBot.create(:post)
+      post2 = FactoryBot.create(:second_post)
       visit posts_path
-      expect(page).to have_content(/post1|post2/)
+      expect(page).to have_content(/Some|rationale/)
     end
 
     it 'has a user with a Last and First Name' do
