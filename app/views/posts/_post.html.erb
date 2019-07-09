@@ -12,6 +12,8 @@
       <%= post.user.full_name%>
     </td>
     <td>
-      <%= link_to 'Edit', edit_post_path(post),  id: "edit#{post.id}"%>
+      <%= link_to 'Editar', edit_post_path(post),  id: "edit#{post.id}"%>
+      |
+      <%= link_to 'Borrar', post_path(post), method: :delete, id: "delete#{post.id}"%>
     </td>
 </tr>

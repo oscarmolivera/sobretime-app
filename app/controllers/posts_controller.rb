@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update]
+  before_action :set_post, only: %i[show edit update destroy]
   before_action :authenticate_user!
   def index
     @post = Post.all
@@ -30,7 +30,12 @@ class PostsController < ApplicationController
   end
 
   def show;  end
-
+  
+  def destroy 
+    @post.delete
+    redirect_to @post
+  end
+  
   private
     def post_params
       params.require(:post).permit(:date, :rationale)

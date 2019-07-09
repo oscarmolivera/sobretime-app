@@ -38,6 +38,15 @@ describe 'navegate' do
     end
   end
 
+  describe 'delete' do
+     it 'y existe un enlace para borrar Post' do
+      @post = FactoryBot.create(:post)
+      visit posts_path
+      click_link("delete#{@post.id}")
+      expect(page.status_code).to eq(200)
+    end
+  end
+
   describe 'to creation' do
     before do
       visit new_post_path
