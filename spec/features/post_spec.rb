@@ -7,7 +7,7 @@ describe 'navegate' do
     visit posts_path
   end
   
-  describe 'index' do
+  describe 'to index' do
     it 'can be access' do
       expect(page.status_code).to eq(200)
     end
@@ -28,7 +28,7 @@ describe 'navegate' do
     end
   end
   
-  describe 'Post Creation' do
+  describe 'to creation' do
     before do
       visit new_post_path
     end
@@ -51,5 +51,26 @@ describe 'navegate' do
       click_on "Save"
       expect(User.last.posts.last.rationale).to eq("User Rationale")
      end
+  end
+
+  describe 'to edit' do
+    before do
+      @post = FactoryBot.create(:post)
+    end
+    it 'y puede accederse desde enlace en Post_Path' do
+      visit posts_path
+      click_link("edit#{@post.id}")
+      visit edit_post_path(@post)
+      expect(page.status_code).to eq(200)
+    end
+
+    it 'y se puede editar y guardar en la BD' do
+      visit edit_post_path(@post)
+      fill_in 'post[date]',	with: Date.today
+      fill_in 'post[rationale]', with: "Content Edited"
+
+      click_on 'Save'
+      expect(page).to have_content("Content Edited")
+    end
   end
 end
