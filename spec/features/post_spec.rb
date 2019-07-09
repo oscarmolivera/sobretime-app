@@ -28,6 +28,16 @@ describe 'navegate' do
     end
   end
   
+  describe 'new' do
+    it 'y tiene un enlace para crear POST' do
+      visit root_path
+      
+      click_link("new_post_from_nav")
+      visit new_post_path
+      expect(page.status_code).to eq(200)
+    end
+  end
+
   describe 'to creation' do
     before do
       visit new_post_path
