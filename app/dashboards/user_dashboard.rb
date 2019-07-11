@@ -6,7 +6,7 @@ class UserDashboard < Administrate::BaseDashboard
     posts: Field::HasMany,
     id: Field::Number,
     email: Field::String,
-    password: Field::String,
+    encrypted_password: Field::String,
     first_name: Field::String,
     last_name: Field::String,
     type: Field::String,
@@ -18,7 +18,6 @@ class UserDashboard < Administrate::BaseDashboard
     :posts,
     :id,
     :email,
-    :password,
     :type,
   ].freeze
 
@@ -26,7 +25,6 @@ class UserDashboard < Administrate::BaseDashboard
     :posts,
     :id,
     :email,
-    :password,
     :first_name,
     :last_name,
     :type,
@@ -36,6 +34,7 @@ class UserDashboard < Administrate::BaseDashboard
     :email,
     :first_name,
     :last_name,
+    :encrypted_password
   ].freeze
 
 end

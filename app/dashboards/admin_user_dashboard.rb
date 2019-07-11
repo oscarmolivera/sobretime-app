@@ -3,29 +3,28 @@ require "administrate/base_dashboard"
 class AdminUserDashboard < Administrate::BaseDashboard
 
   ATTRIBUTE_TYPES = {
-    posts: Field::HasMany,
-    id: Field::Number,
-    email: Field::String,
-    password: Field::String,
-    first_name: Field::String,
-    last_name: Field::String,
-    type: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    posts: Field::HasMany.with_options(searchable: false),
+    id: Field::Number.with_options(searchable: false),
+    email: Field::String.with_options(searchable: true),
+    encrypted_password: Field::String.with_options(searchable: false),
+    first_name: Field::String.with_options(searchable: false),
+    last_name: Field::String.with_options(searchable: false),
+    type: Field::String.with_options(searchable: false),
+    created_at: Field::DateTime.with_options(searchable: false),
+    updated_at: Field::DateTime.with_options(searchable: false),
   }.freeze
 
   COLLECTION_ATTRIBUTES = [ 
     :posts,
     :id,
     :email,
-    :password,
+    :encrypted_password,
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = [
     :posts,
     :id,
     :email,
-    :password,
     :first_name,
     :last_name,
     :type,
@@ -33,7 +32,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
 
   FORM_ATTRIBUTES = [
     :email,
-    :password,
+    :encrypted_password,
     :first_name,
     :last_name,
     :type,
