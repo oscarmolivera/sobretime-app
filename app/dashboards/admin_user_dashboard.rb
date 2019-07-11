@@ -6,7 +6,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
     posts: Field::HasMany.with_options(searchable: false),
     id: Field::Number.with_options(searchable: false),
     email: Field::String.with_options(searchable: true),
-    encrypted_password: Field::String.with_options(searchable: false),
+    password: Field::String.with_options(searchable: false),
     first_name: Field::String.with_options(searchable: false),
     last_name: Field::String.with_options(searchable: false),
     type: Field::String.with_options(searchable: false),
@@ -18,7 +18,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
     :posts,
     :id,
     :email,
-    :encrypted_password,
+    :password,
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = [
@@ -32,7 +32,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
 
   FORM_ATTRIBUTES = [
     :email,
-    :encrypted_password,
+    :password,
     :first_name,
     :last_name,
     :type,
