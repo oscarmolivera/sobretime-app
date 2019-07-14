@@ -26,6 +26,8 @@ describe 'navegate' do
     it 'has a user with a Last and First Name' do
       expect(@user.full_name).to eq("Snow, Jon")
     end
+
+
   end
   
   describe 'new' do

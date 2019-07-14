@@ -7,6 +7,7 @@ class PostDashboard < Administrate::BaseDashboard
     id: Field::Number.with_options(searchable: false),
     date: Field::DateTime.with_options(searchable: false),
     rationale: Field::Text.with_options(searchable: true),
+    status: Field::Text.with_options(searchable: true),
     created_at: Field::DateTime.with_options(searchable: false),
     updated_at: Field::DateTime.with_options(searchable: false),
   }.freeze
@@ -16,6 +17,7 @@ class PostDashboard < Administrate::BaseDashboard
     :id,
     :date,
     :rationale,
+    :status,
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = [
@@ -23,6 +25,7 @@ class PostDashboard < Administrate::BaseDashboard
     :id,
     :date,
     :rationale,
+    :status,
     :created_at,
     :updated_at,
   ].freeze

@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     end
   resources :posts
   devise_for :users, skip: %i[registration]
-  root 'static#homepage'
+  root 'static#homepage'  
 end
