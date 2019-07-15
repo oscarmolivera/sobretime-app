@@ -1,4 +1,8 @@
-<div class="form-group">
-  <%= f.radio_button_tag(:aceptado, "aprobado") %>
-  <%= f.label_tag(:aceptado, "Aprobado") %>
-</div>
+  <div class="form-group">
+    <%= f.radio_button(:status, "registrado") %>
+    <%= f.label(:status, "Registrado") %>
+    <%= f.radio_button(:status, "aprobado") %>
+    <%= f.label(:status, "Aprobado") %>
+    <%= f.radio_button(:status, "rechazado") %>
+    <%= f.label(:status, "Rechazado") %>
+  </div>
