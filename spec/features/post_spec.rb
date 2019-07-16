@@ -76,22 +76,26 @@ describe 'navegate' do
 
   describe 'to edit' do
     before do
-      @post = FactoryBot.create(:post)
-    end
-    it 'y puede accederse desde enlace en Post_Path' do
-      visit posts_path
-      click_link("edit#{@post.id}")
-      visit edit_post_path(@post)
-      expect(page.status_code).to eq(200)
+      @edit_user = User.create(email: "user_edit@gmail.com", first_name: "User", last_name: "Edit", password: "123456", password_confirmation: "123456")
+      login_as(@edit_user, scope: :user)
+      @edit_post = Post.create!(date: Date.today, rationale:"Test Editind Post", user_id: @edit_user.id)
     end
 
     it 'y se puede editar y guardar en la BD' do
-      visit edit_post_path(@post)
+      visit edit_post_path(@edit_post)
       fill_in 'post[date]',	with: Date.today
       fill_in 'post[rationale]', with: "Content Edited"
 
       click_on 'Save'
       expect(page).to have_content("Content Edited")
+    end
+
+    it 'no puede ser editada por un usuario no authorizado' do
+      logout(:user)
+      non_authorized_user = FactoryBot.create(:non_authorized_user)
+      login_as(non_authorized_user, scope: :user)
+      visit edit_post_path(@edit_post)
+      expect(current_path).to eq(root_path)
     end
   end
 end
