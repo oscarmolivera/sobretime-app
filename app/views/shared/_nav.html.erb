@@ -1,6 +1,7 @@
 <div class="logo">
 <h1>Registro de Horas.</h1>
 </div>
+<% if current_user%>
 <ul class="custom-nav nav nav-pills">
   <li class="nav-item <%= active?(root_path) %>">
     <%= link_to 'Inicio', root_path %>
@@ -11,13 +12,25 @@
   <li class="nav-item <%= active?(new_post_path) %>">
     <%= link_to 'Nuevo', new_post_path, id: 'new_post_from_nav' %>
   </li>
+  
   <li class="nav-item dropdown ml-md-auto pull-right">
-      <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Perfil</a>
+      <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Opciones</a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-        <%= link_to 'Admin Dashbord', root_path %>
-      <div class="dropdown-divider">
-      </div> 
+    <% if current_user.type == 'AdminUser'%>
+        <%= link_to 'Admin Dashbord', admin_root_path %>
+      <div class="dropdown-divider"></div> 
+    <% end%>
       <%= link_to 'Cerrar Session', destroy_user_session_path, method: :delete %>
     </div>
   </li>
 </ul>
+<% else%>
+  <ul class="custom-nav nav nav-pills">
+    <li class="nav-item dropdown ml-md-auto pull-right">
+      <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Opciones</a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+        <%= link_to 'Login', new_user_session_path %>
+      </div>
+    </li>
+  </ul>
+<% end %>
