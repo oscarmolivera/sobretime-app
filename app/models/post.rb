@@ -3,4 +3,6 @@ class Post < ApplicationRecord
   belongs_to :user
   validates :date, presence: true
   validates :rationale, presence: true
+
+  scope :posts_by, lambda{|user| where user_id: user.id}
 end

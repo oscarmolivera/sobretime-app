@@ -1,13 +1,19 @@
 require 'rails_helper'
 
 describe 'navegate' do
+  let(:user) {FactoryBot.create(:user)}
+  let!(:post1) do
+    Post.create(date: Date.today, rationale:"Some test rationale Numero Uno!", user_id: user.id)
+  end
   before do
-    @user = FactoryBot.create(:user)
-    login_as(@user, scope: :user)
-    visit posts_path
+    login_as(user, scope: :user)
   end
   
   describe 'to index' do
+    before do
+      visit posts_path
+    end
+
     it 'can be access' do
       expect(page.status_code).to eq(200)
     end
@@ -17,17 +23,10 @@ describe 'navegate' do
     end
 
     it 'has some Posts with content' do
-      post1 = FactoryBot.create(:post)
-      post2 = FactoryBot.create(:second_post)
-      post1.update(user_id: @user.id)
-      post2.update(user_id: @user.id)
-      visit posts_path
       expect(page).to have_content(/Some|rationale/)
     end
 
     it 'tiene solo la lista de POST creados por el usuario' do
-      post1 =  Post.create!(date: Date.today, rationale:"Test rationale Numero Uno!", user_id: @user.id)
-      post2 =  Post.create!(date: Date.today, rationale:"Test rationale Numero Uno!", user_id: @user.id)
       other_user = User.create!(email: "user@test.com", first_name: "Test", last_name: "User", password: "123456", password_confirmation: "123456")
       other_user_post =  Post.create!(date: Date.today, rationale:"Test rationale Numero DOS!", user_id: other_user.id)
       #byebug
@@ -36,7 +35,7 @@ describe 'navegate' do
     end
 
     it 'has a user with a Last and First Name' do
-      expect(@user.full_name).to eq("Snow, Jon")
+      expect(user.full_name).to eq("Snow, Jon")
     end
 
 
@@ -54,10 +53,9 @@ describe 'navegate' do
 
   describe 'delete' do
      it 'y existe un enlace para borrar Post' do
-      post = FactoryBot.create(:post)
-      post.update(user_id: @user.id)
       visit posts_path
-      click_link("delete#{post.id}")
+      save_and_open_page
+      click_link("delete#{post1.id}")
       expect(page.status_code).to eq(200)
     end
   end
@@ -88,14 +86,9 @@ describe 'navegate' do
   end
 
   describe 'to edit' do
-    before do
-      @edit_user = User.create(email: "user_edit@gmail.com", first_name: "User", last_name: "Edit", password: "123456", password_confirmation: "123456")
-      login_as(@edit_user, scope: :user)
-      @edit_post = Post.create!(date: Date.today, rationale:"Test Editind Post", user_id: @edit_user.id)
-    end
 
     it 'y se puede editar y guardar en la BD' do
-      visit edit_post_path(@edit_post)
+      visit edit_post_path(post1)
       fill_in 'post[date]',	with: Date.today
       fill_in 'post[rationale]', with: "Content Edited"
 
@@ -107,7 +100,7 @@ describe 'navegate' do
       logout(:user)
       non_authorized_user = FactoryBot.create(:non_authorized_user)
       login_as(non_authorized_user, scope: :user)
-      visit edit_post_path(@edit_post)
+      visit edit_post_path(post1)
       expect(current_path).to eq(root_path)
     end
   end
