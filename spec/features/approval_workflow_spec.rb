@@ -26,5 +26,16 @@ describe 'navigate' do
       visit edit_post_path(@post)
       expect(page).to_not have_content('Aprobado')
     end
+
+    it 'no deberia de editarse por el creador del post si este esta APROBADO' do
+    logout(:user)
+    other_user = FactoryBot.create(:other_user)
+    login_as(other_user, scope: :user)
+    
+    @post.update(user_id: other_user.id, status: 'aprobado')
+
+    visit edit_post_path(@post)
+    expect(current_path).to eq(root_path)
+  end
   end
 end

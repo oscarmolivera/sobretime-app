@@ -54,7 +54,6 @@ describe 'navegate' do
   describe 'delete' do
      it 'y existe un enlace para borrar Post' do
       visit posts_path
-      save_and_open_page
       click_link("delete#{post1.id}")
       expect(page.status_code).to eq(200)
     end
@@ -98,7 +97,7 @@ describe 'navegate' do
 
     it 'no puede ser editada por un usuario no authorizado' do
       logout(:user)
-      non_authorized_user = FactoryBot.create(:non_authorized_user)
+      non_authorized_user = FactoryBot.create(:other_user)
       login_as(non_authorized_user, scope: :user)
       visit edit_post_path(post1)
       expect(current_path).to eq(root_path)
