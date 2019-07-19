@@ -1,3 +1,17 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.icon-accion-edit, 
+.icon-accion-delete,
+.icon-accion-edit:hover,
+.icon-accion-delete:hover{
+  text-decoration-line: none;
+  font-size: 1.5em;
+}
+.icon-accion-edit:hover{
+  color:black;
+}
+
+.icon-accion-delete:hover{
+  color:darkred;
+}

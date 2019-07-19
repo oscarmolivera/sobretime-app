@@ -2,7 +2,7 @@
     <td>
       <%= post.id%>
     </td>
-        <td>
+    <td>
       <%= post.date%>
     </td>
     <td>
@@ -18,7 +18,7 @@
       <%= status_label post.status%>
     </td>
     <td>
-      <%= link_to 'Editar | ', edit_post_path(post),  id: "edit#{post.id}" if policy(post).update?%>
-      <%= link_to 'Borrar', post_path(post), method: :delete, id: "delete#{post.id}"%>
+      <%= link_to '', edit_post_path(post), class: "glyphicon glyphicon-pencil icon-accion-edit",  id: "edit#{post.id}" if policy(post).update?%>
+      <%= link_to '', post_path(post), class: "glyphicon glyphicon-trash icon-accion-delete", method: :delete, id: "delete#{post.id}"%>
     </td>
 </tr>
