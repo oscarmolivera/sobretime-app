@@ -36,7 +36,7 @@ class UserDashboard < Administrate::BaseDashboard
     :email,
     :first_name,
     :last_name,
-    :encrypted_password
+    :encrypted_password,
     :phone,
   ].freeze
 
