@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   has_many :posts
+  has_many :audit_logs
   PHONE_REGEX = /\A[0-9]*\z/
   validates :first_name,  presence: true
   validates :last_name,  presence: true
