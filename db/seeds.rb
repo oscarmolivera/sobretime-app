@@ -16,8 +16,5 @@ end
 10.times do |post|
   Post.create!(date: Date.today, rationale:"#{post+1} It is a Comment Post from ADMIN User!", user_id: 3, overtime_request: 0.5)
 end
-10.times do |audit_log|
-  AuditLog.create!(user_id: 3, status: 0, start_date: ((Date.today + audit_log.days) -6.days ))
-end
 puts "Creados 50 Posts!"
-puts "Creados 50 Auditorias!"
+puts "Creados 40 Auditorias!"

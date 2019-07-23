@@ -12,6 +12,8 @@
   <li class="nav-item <%= active?(new_post_path) %>">
     <%= link_to 'Nuevo', new_post_path, id: 'new_post_from_nav' %>
   </li>
+   
+   <%= render 'shared/audit_logs' if policy(AuditLog).index? %>
   
   <li class="nav-item dropdown ml-md-auto pull-right">
       <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Opciones</a>
