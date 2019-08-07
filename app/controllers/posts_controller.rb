@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   before_action :authenticate_user!
   def index
-    @post = Post.posts_by current_user
+    @post = Post.posts_by(current_user).page(params[:page]).per(15)
   end
   
   def new
