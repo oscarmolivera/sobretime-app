@@ -1,2 +1,28 @@
-<h1>INDEX</h1>
-<%= render @audit_logs%>
+<h2>Escritorio Auditorias</h2>
+<table class="table table-bordered table-hover table-sm">
+  <thead>
+    <tr>
+      <th>
+        #
+      </th>
+      <th>
+        Empleado
+      </th>
+      <th>
+        Semana
+      </th>
+      <th>
+        Confirmacion
+      </th>
+      <th>
+        Estado
+      </th>
+      <th>
+        Acción
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @audit_logs%>
+  </tbody>
+</table>
