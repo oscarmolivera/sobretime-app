@@ -1,4 +1,5 @@
 class AuditLog < ApplicationRecord
+  enum status: {pendiente: 0, ejecutado: 1}
   belongs_to :user
   
   after_initialize :set_default
