@@ -7,7 +7,7 @@ module SmsTool
 
     def self.send_sms(number:, message:)
       byebug
-      @client.api.account.messages.create(
+      @client.messages.create(
         to: "+56#{number}", 
         from: TRIAL_PHONE,
         body: "#{message}"
@@ -15,5 +15,5 @@ module SmsTool
     end
 
 end   
-
+#@client.api.account.messages.create()
 #SmsTool.send_sms(number: "947880067", message:"First Text From Twilio")

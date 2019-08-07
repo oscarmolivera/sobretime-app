@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :audit_logs
+  resources :audit_logs, except: %i[ new edut destroy]
   namespace :admin do
       resources :users
       resources :posts
