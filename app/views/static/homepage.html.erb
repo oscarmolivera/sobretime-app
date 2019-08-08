@@ -1,10 +1,5 @@
-<div class="jumbotron">
-  <h2>
-    Escritorio
-  </h2>
-  <% if admin_types.include?(current_user.try(:type))%>
-    <%= render 'admin_dashboard'%>
-  <% else %>
-    <%= render 'user_dashboard'%>
-  <% end %>
-</div>
+<% if admin_types.include?(current_user.try(:type))%>
+  <%= render 'admin_dashboard'%>
+<% else %>
+  <%= render 'user_dashboard'%>
+<% end %>
