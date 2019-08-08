@@ -7,6 +7,10 @@ module ApplicationHelper
     status_label_generator status
   end
 
+  def admin_types
+    %w[ AdminUser ]
+  end
+
   private
     def status_label_generator status
       case status
