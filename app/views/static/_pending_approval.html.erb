@@ -6,10 +6,10 @@
 
     <div class="row">
       <div class="col-md-6 column">
-        <%= link_to 'Aprobación', root_path, class: "btn btn-block btn-success"%>
+        <%= link_to 'Aprobar ', approve_post_path(pa), class: "btn btn-block btn-success", id: "Post##{pa.id}"%>
       </div>
       <div class="col-md-6 column">
-        <%= link_to 'En Revision', root_path, class: "btn btn-block btn-warning"%>
+        <%= link_to 'Revisar', post_path(pa.id), class: "btn btn-block btn-warning"%>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_post, only: %i[show edit update destroy approve]
   before_action :authenticate_user!
   def index
     @post = Post.posts_by(current_user).page(params[:page]).per(15)
@@ -39,7 +39,13 @@ class PostsController < ApplicationController
     @post.delete
     redirect_to @post
   end
-  
+
+  def approve
+    authorize @post
+    @post.aprobado!
+    redirect_to root_path, notice: "Horas aprobadas con éxito"
+  end
+
   private
     def post_params
       params.require(:post).permit(:date, :rationale, :status, :overtime_request)
