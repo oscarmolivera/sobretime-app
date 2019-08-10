@@ -1,6 +1,11 @@
 class StaticController < ApplicationController
   def homepage
-    @pending_approval = Post.where(status: :registrado)
-    @recent_audit_items = AuditLog.last(10)
+    if current_user.present?
+      if admin_types.include?(current_user.type)
+        @pending_approval = Post.registrado
+        @recent_audit_items = AuditLog.last(10)
+      else
+      end
+    end    
   end
 end

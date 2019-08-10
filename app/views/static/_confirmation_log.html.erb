@@ -1,8 +1,8 @@
 <% @recent_audit_items.each do |rai| %>
-  <div class="homepage-block col-md-3">
+  <div class="admin-homepage-block col-md-3">
     <h4><%= rai.user.full_name %></h4>
-    <p><span class="pending-details">Semana de Inicio:</span> <%= rai.start_date%> </p>
-    <p><span class="pending-details">Confirmado:</span> <%= rai.end_date || status_label('pendiente') %> </p>
-    <p><span class="pending-details">Estado:</span> <%= status_label rai.status %></p>
+    <p><span class="admin-pending-details">Semana de Inicio:</span> <%= rai.start_date%> </p>
+    <p><span class="admin-pending-details">Confirmado:</span> <%= rai.end_date || status_label('pendiente') %> </p>
+    <p><span class="admin-pending-details">Estado:</span> <%= status_label rai.status %></p>
   </div>
 <% end %>

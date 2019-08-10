@@ -1,4 +1,4 @@
-.pending-homepage{
+.admin-pending-homepage{
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: #e3e3e3;
@@ -6,7 +6,7 @@
   padding: 20px;
 }
 
-.homepage-block{
+.admin-homepage-block{
   background-color: #1D3C91;
   color:white;
   margin: 15px;
@@ -14,10 +14,14 @@
   border-radius: 3px;
 }
 
-.pending-details{
+.admin-pending-details{
   font-weight: 900;
 }
 
-.homepage-block:hover{
+.admin-homepage-block:hover{
   background-color: #172b63;
+}
+
+.employee-block{
+  margin: 25px;
 }

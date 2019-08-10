@@ -1,10 +1,10 @@
 <div class="container-fluid">
-  <div class="pending-homepage row">
+  <div class="admin-pending-homepage row">
     <h2> Solicitudes de horas Extras.</h2>
     <hr>
     <%= render partial: 'pending_approval', locals:{pending_approval: @pending_approval}%>
   </div>
-  <div class="pending-homepage row">
+  <div class="admin-pending-homepage row">
     <h2> Pendientes por Revisión.</h2>
     <hr>
     <%= render partial: 'confirmation_log', locals:{recent_audit_items: @recent_audit_items}%>
