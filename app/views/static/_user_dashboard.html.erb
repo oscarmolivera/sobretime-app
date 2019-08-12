@@ -1,8 +1,14 @@
 <div class="container-fluid">
   <div class="row">
+    <% if @pending_audit_confirmations.present?%>
+      <div class="admin-pending-homepage employee-block">
+        <h3>Confirmaciones Pendientes</h3>
+        <%= render partial: 'pending_audit_confirmations', locals: {pending_audit_confirmations: @pending_audit_confirmations}%>
+      </div>
+    <% end %>  
     <div class="admin-pending-homepage employee-block">
-      <h3>Confirmaciones Pendientes</h3>
-      <%= render partial: 'pending_audit_confirmations', locals: {pending_audit_confirmations: @pending_audit_confirmations}%>
+      <h3>Incluir Horas</h3>
+      <%= link_to 'Nuevo Ingreso', new_post_path, class: "btn btn-lg btn-block btn-primary" %>
     </div>
   </div>
 </div>
