@@ -1,0 +1,6 @@
+<% pending_audit_confirmations.each do |pac| %>
+  <%= link_to "Confirmo que NO tengo horas extras en la semana de #{pac.start_date}", 
+      root_path, 
+      class: "btn btn-lg btn-block btn-warning", 
+      data: { confirm: "¿ Está seguro que no registrará horas extras para esta semana?" }%>
+<% end%>

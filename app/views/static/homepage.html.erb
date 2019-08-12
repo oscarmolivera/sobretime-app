@@ -1,5 +1,7 @@
-<% if admin_types.include?(current_user.try(:type))%>
-  <%= render 'admin_dashboard'%>
-<% else %>
-  <%= render 'user_dashboard'%>
+<% if current_user.present? %>
+  <% if admin_types.include?(current_user.try(:type))%>
+    <%= render 'admin_dashboard'%>
+  <% else %>
+      <%= render 'user_dashboard'%>
+  <% end %>
 <% end %>
