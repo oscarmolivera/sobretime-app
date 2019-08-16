@@ -13,6 +13,7 @@ class Post < ApplicationRecord
   private
     def update_audit_log
       audit_log = AuditLog.where(user_id: self.user.id, start_date: (self.date - 7.days..self.date)).last
-      audit_log.update(status: 1)
+      audit_log.status = 1
+      audit_log.save
     end
 end
