@@ -1,7 +1,9 @@
 namespace :notification do
   desc "Envia notificaciones SMS a empleados solitando que registen o no sus horas extras."
   task sms: :environment do
-    puts "...Desde un TASK de Rails"
+    if Time.now.sunday?
+      puts "...Envio de SMS"
+    end
   end
 
   desc "Envia notificaciones de correo a los gerentes (Admins) cada dia para informar sobre horas extras  ."
