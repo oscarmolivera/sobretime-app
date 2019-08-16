@@ -12,8 +12,11 @@ class Post < ApplicationRecord
 
   private
     def update_audit_log
+      debugger
       audit_log = AuditLog.where(user_id: self.user.id, start_date: (self.date - 7.days..self.date)).last
-      audit_log.status = 1
-      audit_log.save
+      if audit_log.present?
+        audit_log.status = 1
+        audit_log.save
+      end
     end
 end
