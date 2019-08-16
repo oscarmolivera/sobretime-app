@@ -1,12 +1,16 @@
-User.create!(email: "oscarmolivera@gmail.com", first_name: "Oscar", last_name: "Olivera", password: "123456", password_confirmation: "123456", phone: "6947880067")
-User.create!(email: "usuario2@gmail.com", first_name: "Normal", last_name: "User", password: "123456", password_confirmation: "123456", phone: "6978663322")
-AdminUser.create!(email: "newadmin@mysite.com", first_name: "Admin", last_name: "User", password: "123456", password_confirmation: "123456", phone: "6947880067")
+@employee = Employee.create(email: "oscarmolivera@gmail.com", first_name: "Oscar", last_name: "Olivera", password: "123456", password_confirmation: "123456", phone: "947880067")
+@employee = Employee.create(email: "usuario2@gmail.com", first_name: "Normal", last_name: "User", password: "123456", password_confirmation: "123456", phone: "947880068")
+puts "2 Empleados Creados"
 
-AuditLog.create!(user_id: 1, status: 0, start_date: (Date.today - 6.days))
-AuditLog.create!(user_id: 1, status: 0, start_date: (Date.today - 13.days))
-AuditLog.create!(user_id: 1, status: 0, start_date: (Date.today - 20.days))
+AdminUser.create(email: "newadmin@mysite.com", first_name: "Admin", last_name: "User", password: "123456", password_confirmation: "123456", phone: "947880069")
+puts "Administrador Creado"
 
-20.times do |post|
+AuditLog.create(user_id: 1, status: 0, start_date: (Date.today - 6.days))
+AuditLog.create(user_id: 1, status: 0, start_date: (Date.today - 13.days))
+AuditLog.create(user_id: 1, status: 0, start_date: (Date.today - 20.days))
+puts "3 Logs Creados"
+
+5.times do |post|
   Post.create!(date: Date.today, rationale:"#{post+1} Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when 
                                             an unknown printer took a galley of type and scrambled it to make a type specimen 
@@ -14,5 +18,6 @@ AuditLog.create!(user_id: 1, status: 0, start_date: (Date.today - 20.days))
                                             typesetting, remaining essentially unchanged. It was popularised in the 1960s with 
                                             the release of Letraset sheets containing Lorem Ipsum passages, and more recently 
                                             with desktop publishing software like Aldus PageMaker including versions of Lorem 
-                                            Ipsum!", user_id: 1, overtime_request: 1.0)
+                                            Ipsum!", user_id: @employee.id, overtime_request: 1.0)
 end
+puts "5 POST Creados por cada usuario"

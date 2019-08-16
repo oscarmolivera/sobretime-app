@@ -1,8 +1,12 @@
 namespace :notification do
   desc "Envia notificaciones SMS a empleados solitando que registen o no sus horas extras."
   task sms: :environment do
-    if Time.now.sunday?
-      puts "...Envio de SMS"
+    if Time.now.friday?
+      notification_message = "Ingrese a SOBRETIME para ingresar sus horas extras si las posee o confirmar que no generó: https://https://jhdc-sobretime.herokuapp.com"
+      employees = Employee.all
+      employees.each do |e|
+        SmsTool.send_sms(number: e.phone, message: notification_message)
+      end
     end
   end
 

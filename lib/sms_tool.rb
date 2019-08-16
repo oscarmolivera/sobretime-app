@@ -6,7 +6,6 @@ module SmsTool
     @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
 
     def self.send_sms(number:, message:)
-      byebug
       @client.messages.create(
         to: "+56#{number}", 
         from: TRIAL_PHONE,
