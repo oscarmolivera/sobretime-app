@@ -1,8 +1,24 @@
-@employee = Employee.create(email: "oscarmolivera@gmail.com", first_name: "Oscar", last_name: "Olivera", password: "123456", password_confirmation: "123456", phone: "947880067")
-@employee = Employee.create(email: "usuario2@gmail.com", first_name: "Normal", last_name: "User", password: "123456", password_confirmation: "123456", phone: "947880068")
+@employee = Employee.create(email: "oscarmolivera@gmail.com", 
+                            first_name: "Oscar", 
+                            last_name: "Olivera", 
+                            password: "123456", 
+                            password_confirmation: "123456", 
+                            phone: "947880067")
+
+@employee = Employee.create(email: "usuario2@gmail.com", 
+                            first_name: "Normal", 
+                            last_name: "User", 
+                            password: "123456", 
+                            password_confirmation: "123456", 
+                            phone: "947880068")
 puts "2 Empleados Creados"
 
-AdminUser.create(email: "newadmin@mysite.com", first_name: "Admin", last_name: "User", password: "123456", password_confirmation: "123456", phone: "947880069")
+AdminUser.create(email: "newadmin@mysite.com", 
+                 first_name: "Admin", 
+                 last_name: "User", 
+                 password: "123456", 
+                 password_confirmation: "123456", 
+                 phone: "947880069")
 puts "Administrador Creado"
 
 AuditLog.create(user_id: 1, status: 0, start_date: (Date.today - 6.days))
