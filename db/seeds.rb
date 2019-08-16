@@ -5,15 +5,9 @@
                             password_confirmation: "123456", 
                             phone: "947880067")
 
-@employee = Employee.create(email: "usuario2@gmail.com", 
-                            first_name: "Normal", 
-                            last_name: "User", 
-                            password: "123456", 
-                            password_confirmation: "123456", 
-                            phone: "947880068")
-puts "2 Empleados Creados"
+puts "Empleado Creado"
 
-AdminUser.create(email: "newadmin@mysite.com", 
+AdminUser.create(email: "oscarmolivera@outlook.com", 
                  first_name: "Admin", 
                  last_name: "User", 
                  password: "123456", 
@@ -21,9 +15,9 @@ AdminUser.create(email: "newadmin@mysite.com",
                  phone: "947880069")
 puts "Administrador Creado"
 
-AuditLog.create(user_id: 1, status: 0, start_date: (Date.today - 6.days))
-AuditLog.create(user_id: 1, status: 0, start_date: (Date.today - 13.days))
-AuditLog.create(user_id: 1, status: 0, start_date: (Date.today - 20.days))
+AuditLog.create(user_id: @employee.id, status: 0, start_date: (Date.today - 6.days))
+AuditLog.create(user_id: @employee.id, status: 0, start_date: (Date.today - 13.days))
+AuditLog.create(user_id: @employee.id, status: 0, start_date: (Date.today - 20.days))
 puts "3 Logs Creados"
 
 5.times do |post|
