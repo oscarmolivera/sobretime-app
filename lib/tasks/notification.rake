@@ -6,6 +6,7 @@ namespace :notification do
                               que no generó: https://https://jhdc-sobretime.herokuapp.com"
       employees = Employee.all
       employees.each do |e|
+        AuditLog.create!(user_id: e.id)
         SmsTool.send_sms(number: e.phone, message: notification_message)
       end
     end
