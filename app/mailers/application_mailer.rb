@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'no_reply@sandbox71eeb61820e64455b8a96d96a062b022.mailgun.org'
+  default from: 'no_reply@stmail.oscarmolivera.me'
   layout 'mailer'
 end
