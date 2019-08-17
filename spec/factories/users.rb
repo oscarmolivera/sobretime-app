@@ -8,7 +8,7 @@ FactoryBot.define do
     f.email                 {generate :email}
     f.password              {'asdfasdf'}
     f.password_confirmation {'asdfasdf'}
-    f.phone                 {'5512345678'}
+    f.phone                 {'551234567'}
   end
 
   factory :admin_user, class: 'AdminUser' do |a|
@@ -17,7 +17,7 @@ FactoryBot.define do
     a.email                 {generate :email}
     a.password              {'asdfasdf'}
     a.password_confirmation {'asdfasdf'}
-    a.phone                 {'5512345678'}
+    a.phone                 {'551234578'}
   end
 
     factory :other_user, class: 'User' do |o|
@@ -26,7 +26,7 @@ FactoryBot.define do
     o.email                 {generate :email}
     o.password              {'asdfasdf'}
     o.password_confirmation {'asdfasdf'}
-    o.phone                 {'5823160794'}
+    o.phone                 {'582316094'}
   end
 
 end

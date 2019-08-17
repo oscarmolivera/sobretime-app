@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
 													password_confirmation: "asdfasdf", 
 													first_name: "Jon", 
 													last_name: "Snow", 
-													phone: "5655599874")
+													phone: "565559984")
   	end
   describe "creation" do
 
