@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :audit_logs, except: %i[ new edut destroy] do
+  resources :audit_logs, except: %i[ new edit destroy] do
     member do
       get :confirm
     end

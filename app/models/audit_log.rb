@@ -3,7 +3,7 @@ class AuditLog < ApplicationRecord
   belongs_to :user
   
   after_initialize :set_default
-  before_save :set_end_date if :confirmado?
+  before_save :set_end_date
 
   validates :user,  presence: true
   validates :status,  presence: true
@@ -16,7 +16,7 @@ class AuditLog < ApplicationRecord
       self.start_date ||= Date.today - 6.days
     end
 
-    def set_end_date
-      self.end_date = Date.today
+    def set_end_date      
+      self.end_date = Date.today if self.confirmado?
     end
 end

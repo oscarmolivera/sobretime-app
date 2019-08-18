@@ -15,9 +15,9 @@ AdminUser.create(email: "oscarmolivera@outlook.com",
                  phone: "947880069")
 puts "Administrador Creado"
 
-AuditLog.create(user_id: @employee.id, status: 0, start_date: (Date.today - 6.days))
-AuditLog.create(user_id: @employee.id, status: 0, start_date: (Date.today - 13.days))
 AuditLog.create(user_id: @employee.id, status: 0, start_date: (Date.today - 20.days))
+AuditLog.create(user_id: @employee.id, status: 0, start_date: (Date.today - 13.days))
+AuditLog.create(user_id: @employee.id, status: 0, start_date: (Date.today - 6.days))
 puts "3 Logs Creados"
 
 5.times do |post|

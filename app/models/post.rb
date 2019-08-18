@@ -8,11 +8,20 @@ class Post < ApplicationRecord
 
   scope :posts_by, lambda{|user| where user_id: user.id}
 
-  after_save :update_audit_log
+	after_save :confirm_audit_log, if: :registrado?
+	after_save :un_confirm_audit_log, if: :rechazado?
 
   private
-    def update_audit_log
-      audit_log = AuditLog.where(user_id: self.user.id, start_date: (self.date - 7.days..self.date)).last
-      audit_log.confirmado! if audit_log
-    end
+
+    def confirm_audit_log
+			audit_log = AuditLog.where(user_id: self.user_id, start_date: (self.date - 7.days..self.date)).last
+			audit_log.confirmado! if audit_log
+		end
+
+    def un_confirm_audit_log
+      debugger
+			audit_log = AuditLog.where(user_id: self.user_id, start_date: (self.date - 7.days..self.date)).last
+			audit_log.pendiente! if audit_log
+		end
+
 end
