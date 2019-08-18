@@ -10,6 +10,7 @@ class AuditLog < ApplicationRecord
   validates :start_date,  presence: true
 
   default_scope { order(id: :asc) }
+  scope :by_start_date, lambda{order('start_date DESC')}
 
   private 
     def set_default

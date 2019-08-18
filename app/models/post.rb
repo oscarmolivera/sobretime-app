@@ -12,16 +12,18 @@ class Post < ApplicationRecord
 	after_save :un_confirm_audit_log, if: :rechazado?
 
   private
+    def set_audit_log
+      @audit_log = AuditLog.where(user_id: self.user_id, start_date: (self.date - 7.days..self.date)).last
+    end
 
     def confirm_audit_log
-			audit_log = AuditLog.where(user_id: self.user_id, start_date: (self.date - 7.days..self.date)).last
-			audit_log.confirmado! if audit_log
+			set_audit_log
+			@audit_log.confirmado! if @audit_log
 		end
 
     def un_confirm_audit_log
-      debugger
-			audit_log = AuditLog.where(user_id: self.user_id, start_date: (self.date - 7.days..self.date)).last
-			audit_log.pendiente! if audit_log
+			set_audit_log
+			@audit_log.pendiente! if @audit_log
 		end
 
 end
