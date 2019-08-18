@@ -11,6 +11,14 @@ module ApplicationHelper
     %w[ AdminUser ]
   end
 
+  def employee?
+    true if current_user.type == 'Employee'
+  end
+
+  def admin?
+    true if admin_types.include?(current_user.type)
+  end
+
   private
     def status_label_generator status
       case status

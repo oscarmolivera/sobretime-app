@@ -43,6 +43,8 @@ describe 'navegate' do
   
   describe 'new' do
     it 'y tiene un enlace para crear POST' do
+      employee = Employee.create!(email: "employee@test.com", first_name: "Employee", last_name: "User", password: "123456", password_confirmation: "123456", phone: "555599879")
+      login_as(employee, scope: :user)
       visit root_path
       
       click_link("new_post_from_nav")
