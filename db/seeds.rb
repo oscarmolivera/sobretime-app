@@ -3,7 +3,9 @@
                             last_name: "Olivera", 
                             password: "123456", 
                             password_confirmation: "123456", 
-                            phone: "947880067")
+                            phone: "947880067",
+                            ssn: '9872',
+                            company: 'Inviteca LLC')
 
 puts "Empleado Creado"
 
@@ -12,7 +14,9 @@ AdminUser.create(email: "oscarmolivera@outlook.com",
                  last_name: "User", 
                  password: "123456", 
                  password_confirmation: "123456", 
-                 phone: "947880069")
+                 phone: "947880069",
+                 ssn: '3882',
+                 company: 'Inviteca LLC')
 puts "Administrador Creado"
 
 AuditLog.create(user_id: @employee.id, status: 0, start_date: (Date.today - 20.days))

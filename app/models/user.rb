@@ -13,6 +13,9 @@ class User < ApplicationRecord
   validates :last_name,  presence: true
   validates :phone,  presence: true
   validates :phone,  length: {is: 9 }
+  validates :ssn,  presence: true
+  validates_numericality_of :ssn
+  validates :company,  presence: true
   validates_format_of :phone, with: PHONE_REGEX
   
   def full_name

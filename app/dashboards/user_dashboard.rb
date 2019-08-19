@@ -13,18 +13,20 @@ class UserDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     phone: Field::String,
+    ssn: Field::Number,
+    company: Field::String,
   }.freeze
 
   COLLECTION_ATTRIBUTES = [
     :posts,
-    :id,
+    :ssn,
     :email,
-    :type,
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = [
     :posts,
-    :id,
+    :ssn,
+    :company,
     :email,
     :phone,
     :first_name,
@@ -33,6 +35,7 @@ class UserDashboard < Administrate::BaseDashboard
   ].freeze
 
   FORM_ATTRIBUTES = [
+    :ssn,
     :email,
     :first_name,
     :last_name,

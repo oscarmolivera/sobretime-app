@@ -9,6 +9,8 @@ FactoryBot.define do
     f.password              {'asdfasdf'}
     f.password_confirmation {'asdfasdf'}
     f.phone                 {'551234567'}
+    f.ssn                   {'2347'}
+    f.company               {'Company Name'}
   end
 
   factory :admin_user, class: 'AdminUser' do |a|
@@ -18,6 +20,8 @@ FactoryBot.define do
     a.password              {'asdfasdf'}
     a.password_confirmation {'asdfasdf'}
     a.phone                 {'551234578'}
+    a.ssn                   {'0317'}
+    a.company               {'Coding House'}
   end
 
     factory :other_user, class: 'User' do |o|
@@ -27,6 +31,8 @@ FactoryBot.define do
     o.password              {'asdfasdf'}
     o.password_confirmation {'asdfasdf'}
     o.phone                 {'582316094'}
+    o.ssn                   {'7098'}
+    o.company               {'Coding House'}
   end
 
 end

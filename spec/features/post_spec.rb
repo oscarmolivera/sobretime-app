@@ -27,7 +27,7 @@ describe 'navegate' do
     end
 
     it 'tiene solo la lista de POST creados por el usuario' do
-      other_user = User.create!(email: "user@test.com", first_name: "Test", last_name: "User", password: "123456", password_confirmation: "123456", phone: "555599874")
+      other_user = User.create!(email: "user@test.com", first_name: "Test", last_name: "User", password: "123456", password_confirmation: "123456", phone: "555599874", ssn: '9468', company: 'TestLLC')
       other_user_post =  Post.create!(date: Date.today, rationale:"Test rationale Numero DOS!", user_id: other_user.id, overtime_request: 0.3)
       #byebug
       visit posts_path
@@ -43,7 +43,7 @@ describe 'navegate' do
   
   describe 'new' do
     it 'y tiene un enlace para crear POST' do
-      employee = Employee.create!(email: "employee@test.com", first_name: "Employee", last_name: "User", password: "123456", password_confirmation: "123456", phone: "555599879")
+      employee = Employee.create!(email: "employee@test.com", first_name: "Employee", last_name: "User", password: "123456", password_confirmation: "123456", phone: "555599879", ssn: '9468', company: 'TestLLC')
       login_as(employee, scope: :user)
       visit root_path
       

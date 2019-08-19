@@ -7,7 +7,9 @@ RSpec.describe User, type: :model do
 													password_confirmation: "asdfasdf", 
 													first_name: "Jon", 
 													last_name: "Snow", 
-													phone: "565559984")
+													phone: "565559984",
+													ssn: '6654',
+													company: 'Test LLC')
   	end
   describe "creation" do
 
@@ -29,12 +31,27 @@ RSpec.describe User, type: :model do
   		expect(@user).to_not be_valid
 		end
 
-		it 'can not have a phone with letters' do
+		it "cannot be created without a company name" do
+  		@user.company = nil
+  		expect(@user).to_not be_valid
+		end
+
+		it "cannot be created without a SSN value" do
+  		@user.ssn = nil
+  		expect(@user).to_not be_valid
+		end
+
+		it "SSN value has to have only numbers" do
+  		@user.ssn = "Test number"
+  		expect(@user).to_not be_valid
+		end
+
+		it 'phone number can not have letters in it' do
 			@user.phone = 'myphonenum'
 			expect(@user).to_not be_valid
 		end
 
-		it 'has to be exactly 10 char long' do
+		it 'the phone number has to be exactly 9 char long' do
 			@user.phone = '12345678'
 			expect(@user).to_not be_valid
 		end
