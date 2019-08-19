@@ -39,4 +39,17 @@ RSpec.describe User, type: :model do
 			expect(@user).to_not be_valid
 		end
 	end
+
+	describe 'Relaciones entre AdminUser y Employee' do
+		it 'allows manager to be asociatiates with diferentes users' do
+			employee_1 = FactoryBot.create(:user)
+			employee_2 = FactoryBot.create(:user)
+			admin_user = FactoryBot.create(:admin_user)
+			Hand.create!(user_id: admin_user.id, hand_id: employee_1.id)
+			Hand.create!(user_id: admin_user.id, hand_id: employee_2.id)
+
+			expect(admin_user.hands.count).to eq(2)
+		end
+	end
+
 end
