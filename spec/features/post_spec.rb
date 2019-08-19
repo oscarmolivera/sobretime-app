@@ -27,11 +27,14 @@ describe 'navegate' do
     end
 
     it 'tiene solo la lista de POST creados por el usuario' do
-      other_user = User.create!(email: "user@test.com", first_name: "Test", last_name: "User", password: "123456", password_confirmation: "123456", phone: "555599874", ssn: '9468', company: 'TestLLC')
-      other_user_post =  Post.create!(date: Date.today, work_performed:"Test work Numero DOS!", user_id: other_user.id, daily_hours: 0.3)
-      #byebug
+      post1
+      second_post = FactoryBot.create(:second_post)
+      second_post.update(user_id: user.id)
+
       visit posts_path
-      expect(page).to_not have_content(/Test Work Numero DOS!/)
+
+      expect(page).to have_text(post1.work_performed)
+      expect(page).to have_text(second_post.work_performed)
     end
 
     it 'has a user with a Last and First Name' do
