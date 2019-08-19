@@ -25,7 +25,7 @@ AuditLog.create(user_id: @employee.id, status: 0, start_date: (Date.today - 6.da
 puts "3 Logs Creados"
 
 5.times do |post|
-  Post.create!(date: Date.today, rationale:"#{post+1} Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+  Post.create!(date: Date.today, work_performed:"#{post+1} Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when 
                                             an unknown printer took a galley of type and scrambled it to make a type specimen 
                                             book. It has survived not only five centuries, but also the leap into electronic 

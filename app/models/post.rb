@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   enum status: {registrado: 0, aprobado: 1, rechazado: 2}
   belongs_to :user
   validates :date, presence: true
-  validates :rationale, presence: true
+  validates :work_performed, presence: true
   validates :daily_hours, presence: true
   validates :daily_hours, numericality: { greater_than: 0 }
 
