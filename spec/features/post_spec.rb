@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'navegate' do
   let(:user) {FactoryBot.create(:user)}
   let!(:post1) do
-    Post.create(date: Date.today, rationale:"Some test rationale Numero Uno!", user_id: user.id, overtime_request: 1.3)
+    Post.create(date: Date.today, rationale:"Some test rationale Numero Uno!", user_id: user.id, daily_hours: 13.3)
   end
   before do
     login_as(user, scope: :user)
@@ -28,7 +28,7 @@ describe 'navegate' do
 
     it 'tiene solo la lista de POST creados por el usuario' do
       other_user = User.create!(email: "user@test.com", first_name: "Test", last_name: "User", password: "123456", password_confirmation: "123456", phone: "555599874", ssn: '9468', company: 'TestLLC')
-      other_user_post =  Post.create!(date: Date.today, rationale:"Test rationale Numero DOS!", user_id: other_user.id, overtime_request: 0.3)
+      other_user_post =  Post.create!(date: Date.today, rationale:"Test rationale Numero DOS!", user_id: other_user.id, daily_hours: 0.3)
       #byebug
       visit posts_path
       expect(page).to_not have_content(/Test rationale Numero DOS!/)
@@ -73,14 +73,14 @@ describe 'navegate' do
     it 'Can create a new post' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "Some rationale"
-      fill_in 'post[overtime_request]', with: 4.5
+      fill_in 'post[daily_hours]', with: 14.5
 
       expect{click_on "Save"}.to change(Post, :count).by(1)
     end
      it 'will be associated with an user' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "User Rationale"
-      fill_in 'post[overtime_request]', with: 4.5
+      fill_in 'post[daily_hours]', with: 4.5
 
       click_on "Save"
       expect(User.last.posts.last.rationale).to eq("User Rationale")

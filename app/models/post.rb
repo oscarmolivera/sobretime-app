@@ -3,8 +3,8 @@ class Post < ApplicationRecord
   belongs_to :user
   validates :date, presence: true
   validates :rationale, presence: true
-  validates :overtime_request, presence: true
-  validates :overtime_request, numericality: { greater_than: 0 }
+  validates :daily_hours, presence: true
+  validates :daily_hours, numericality: { greater_than: 0 }
 
   scope :posts_by, lambda{|user| where user_id: user.id}
 

@@ -32,6 +32,6 @@ puts "3 Logs Creados"
                                             typesetting, remaining essentially unchanged. It was popularised in the 1960s with 
                                             the release of Letraset sheets containing Lorem Ipsum passages, and more recently 
                                             with desktop publishing software like Aldus PageMaker including versions of Lorem 
-                                            Ipsum!", user_id: @employee.id, overtime_request: 1.0)
+                                            Ipsum!", user_id: @employee.id, daily_hours: 12.0)
 end
 puts "5 POST Creados por cada usuario"
