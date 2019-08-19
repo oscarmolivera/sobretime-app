@@ -1,5 +1,5 @@
 <tr>      
-    <td>
+    <td class="hidden-xs">
       <%= post.id%>
     </td>
     <td>
@@ -8,11 +8,8 @@
     <td>
       <%= post.overtime_request%>
     </td>
-    <td>
+    <td class="hidden-xs">
       <%= link_to truncate(post.rationale), post %>
-    </td>
-    <td>
-      <%= post.user.full_name%>
     </td>
     <td>
       <%= status_label post.status%>
